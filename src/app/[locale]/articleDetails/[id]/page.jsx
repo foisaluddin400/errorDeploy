@@ -10,6 +10,7 @@ import {
 
 
 import { notFound, useParams } from "next/navigation";
+import Link from "next/link";
 
 const ArticleDetails = () => {
   const params = useParams();
@@ -119,7 +120,9 @@ const ArticleDetails = () => {
                   <p className="font-semibold">
                     {calculateDaysAgo(relat.createdAt)}
                   </p>
+                  
                   <p className="font-semibold">{relat.title}</p>
+                
                   <div
                     //  dangerouslySetInnerHTML={{
                     //   __html: extractTextWithoutImage(relat?.descriptio),
@@ -128,7 +131,7 @@ const ArticleDetails = () => {
                       __html:
                         extractTextWithoutImage(relat?.description)
                           ?.split(" ")
-                          .slice(0, 8)
+                          .slice(0, 3)
                           .join(" ") + "...",
                     }}
                     className="description-content"
