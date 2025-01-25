@@ -20,7 +20,7 @@ const Navbar = () => {
   }, []);
   const navItems = [
     {
-      title: "Home",
+      title: "Homeeeeee",
       path: "/",
     },
     {
