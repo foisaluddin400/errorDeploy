@@ -1,28 +1,37 @@
 /* eslint-disable react/prop-types */
-'use client'
+'use client';
 import React from "react";
 import { Link } from "@/i18n/routing";
 import moment from "moment";
 import { FaBookmark } from "react-icons/fa6";
+ // Import router for navigation
 import BaseUrl from "../baseApi/BaseApi";
 import { useBookmarkVideosMutation } from "@/redux/Api/videoApi";
 import { toast } from "sonner";
+import { useLocale } from "next-intl";
 
 const Videos = ({ videose }) => {
+  const locale = useLocale();// Initialize router for navigation
 
-  const [addBookmark] =  useBookmarkVideosMutation();
+  const [addBookmark] = useBookmarkVideosMutation();
 
+  const handleBookmark = async (id) => {
+    // Check if accessToken exists in localStorage
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      // Redirect to sign-in page if not logged in
+      window.location.href = `/${locale}/signIn`;
+      return;
+    }
 
-const handleBookmark = async (id) => {
-  console.log(id)
-  try {
-    const response = await addBookmark(id).unwrap();
-    toast.success(response.message || "Video bookmark successfully!")
-    console.lg("Video bookmark successfully!");
-  } catch (error) {
-    toast.error(response.message)
-  }
-};
+    try {
+      const response = await addBookmark(id).unwrap();
+      toast.success(response.message || "Video bookmarked successfully!");
+      console.log("Video bookmarked successfully!");
+    } catch (error) {
+      toast.error(error.message || "Failed to bookmark video.");
+    }
+  };
 
   return (
     <div>
@@ -55,9 +64,12 @@ const handleBookmark = async (id) => {
       <div className="p-2 bg-[#2F799E] text-white -mt-[1px]">
         <div className="flex items-center justify-between gap-2">
           <h2 className="text-lg font-bold truncate">{videose.title}</h2>
-          <p onClick={() => handleBookmark(videose._id)} className="text-2xl cursor-pointer">
-          <FaBookmark
-              style={{ color: videose.isBookmark===true ? "red" : "white" }}
+          <p
+            onClick={() => handleBookmark(videose._id)}
+            className="text-2xl cursor-pointer"
+          >
+            <FaBookmark
+              style={{ color: videose.isBookmark === true ? "red" : "white" }}
             />
           </p>
         </div>
@@ -66,7 +78,7 @@ const handleBookmark = async (id) => {
           <div className="flex items-center gap-2 mt-2 text-sm text-gray-200">
             <span>{videose.totalView} views</span>
             <span></span>
-            <span>{moment(videose.createdAt).fromNow()}</span> 
+            <span>{moment(videose.createdAt).fromNow()}</span>
           </div>
         </div>
       </div>

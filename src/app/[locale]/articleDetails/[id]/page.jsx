@@ -75,7 +75,7 @@ const ArticleDetails = () => {
 
   return (
     <div className="max-w-[1400px] px-4 lg:px-0 m-auto mb-20">
-      <div className="grid grid-cols-5">
+      <div className="lg:grid grid-cols-5">
         <div className="col-span-3">
           <h1 className="my-6 text-2xl font-bold">{singleData.title}</h1>
           {singleData.article_images?.map((image, index) => (
@@ -97,7 +97,7 @@ const ArticleDetails = () => {
           />
         </div>
 
-        <div className="mt-[72px] lg:ml-4 col-span-2">
+        <div className="mt-[72px] lg:ml-4 md:col-span-2">
           {isRelatedLoading ? (
             <Loading />
           ) : (

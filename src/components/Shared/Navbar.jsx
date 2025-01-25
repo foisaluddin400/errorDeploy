@@ -136,7 +136,7 @@ const Navbar = () => {
                 Log Out
               </button>
             ) : (
-              <Link href={`${locale}/signIn`} className="text-white">
+              <Link href={`/signIn`} className="text-white">
                 Sign In
               </Link>
             )}

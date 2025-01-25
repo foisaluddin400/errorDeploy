@@ -2,26 +2,34 @@
 import React from "react";
 
 import Link from "next/link";
-import {  useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { FaArrowRight, FaBookmark } from "react-icons/fa6";
-
+// import { useRouter } from "next/navigation"; // Use Next.js router for redirection
 import BaseUrl from "../baseApi/BaseApi";
 import { useBookmarkArticleMutation } from "@/redux/Api/article";
 import { toast } from "sonner";
 
 const Articles = ({ item }) => {
   const a = useTranslations("article");
-
+   // Initialize router for redirection
+const locale = useLocale();
   const [addBookmark] = useBookmarkArticleMutation();
 
   const handleBookmark = async (id) => {
-    console.log(id);
+    // Check if accessToken exists in localStorage
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      // Redirect to sign-in page if not logged in
+      window.location.href = `/${locale}/signIn`;
+      return;
+    }
+
     try {
       const response = await addBookmark(id).unwrap();
       toast.success(response.message);
-      console.log("Video bookmarked successfully!");
+      console.log("Article bookmarked successfully!");
     } catch (error) {
-      toast.error(response.message);
+      toast.error("Failed to bookmark article.");
       console.log("Failed to bookmark article.");
     }
   };
@@ -52,8 +60,6 @@ const Articles = ({ item }) => {
     return tempElement.innerHTML;
   };
 
-  
-
   return (
     <div className="mb-20">
       {item?.article_images?.slice(0, 1).map((image, index) => (
@@ -68,9 +74,9 @@ const Articles = ({ item }) => {
         <h1 className="text-2xl font-bold">{item?.title}</h1>
       </div>
       <div
-       dangerouslySetInnerHTML={{
-        __html: extractTextWithoutImage(item?.description),
-      }}
+        dangerouslySetInnerHTML={{
+          __html: extractTextWithoutImage(item?.description),
+        }}
         className="description-content"
       />
       <div className="flex justify-between my-5">

@@ -1,29 +1,28 @@
 /* eslint-disable no-constant-binary-expression */
 "use client";
-import React from "react";
-import { useEffect, useState } from "react";
-
-import { Form, Input, Button, Select, message} from "antd";
-import ChangPassword from "./ChangPassword";
-import { useTranslations } from "next-intl";
+import React, { useEffect, useState } from "react";
+import { Form, Input, Button, Select } from "antd";
 import { IoCameraOutline } from "react-icons/io5";
+import { FaUserCircle } from "react-icons/fa"; // Import fallback profile icon
+import { useTranslations } from "next-intl";
 import { useGetUserQuery, useUpdateProfileeMutation } from "@/redux/Api/webmanageApi";
 import BaseUrl from "../baseApi/BaseApi";
 import Loading from "../Loading";
 import { toast } from "sonner";
+import ChangPassword from "./ChangPassword";
 
 const { Option } = Select;
 
 const EditProfile = () => {
-  // Tab state
   const [form] = Form.useForm();
   const [activeTab, setActiveTab] = useState("personalInfo");
   const p = useTranslations("profile");
 
   const { data: userProfile, isLoading: loadingProfile } = useGetUserQuery();
   const [updateProfile, { isLoading: updatingProfile }] = useUpdateProfileeMutation();
-  console.log(userProfile)
+
   const [image, setImage] = useState(null);
+
   useEffect(() => {
     if (userProfile?.data) {
       const user = userProfile.data;
@@ -41,8 +40,6 @@ const EditProfile = () => {
     setImage(file);
   };
 
- 
-
   const onFinish = async (values) => {
     const data = new FormData();
     data.append("username", values.username);
@@ -54,14 +51,14 @@ const EditProfile = () => {
 
     try {
       const response = await updateProfile(data).unwrap();
-      toast.success(response.message );
+      toast.success(response.message);
     } catch (error) {
       toast.error(error.message || "Failed to update profile");
     }
   };
 
   if (loadingProfile) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   const user = userProfile?.data;
@@ -71,22 +68,27 @@ const EditProfile = () => {
       <div className="md:flex justify-center gap-11">
         <div>
           <div className="flex justify-center">
-            <div className="relative w-[140px] h-[124px] mx-auto">
-            <input
+            <div className="relative w-[140px] h-[140px] mx-auto">
+              <input
                 type="file"
                 onChange={handleImageChange}
                 id="img"
                 style={{ display: "none" }}
               />
-              <img
-                style={{ width: 140, height: 140, borderRadius: "100%" }}
-                src={
-                  image
-                    ? URL.createObjectURL(image)
-                    : `${BaseUrl}/${user?.profile_image}` || "/default-profile.png"
-                }
-                alt="Profile"
-              />
+              {image || user?.profile_image ? (
+                <img
+                  className="rounded-full"
+                  style={{ width: 140, height: 140 }}
+                  src={
+                    image
+                      ? URL.createObjectURL(image)
+                      : `${BaseUrl}/${user?.profile_image}`
+                  }
+                  alt="Profile"
+                />
+              ) : (
+                <FaUserCircle className="text-gray-400" size={140} /> // Fallback icon
+              )}
               {activeTab === "personalInfo" && (
                 <label
                   htmlFor="img"
@@ -128,8 +130,7 @@ const EditProfile = () => {
 
           {/* Tab content */}
           {activeTab === "personalInfo" && (
-            <div>
-               <Form
+            <Form
               className="bg-white p-4 rounded md:w-[590px]"
               layout="vertical"
               form={form}
@@ -143,10 +144,7 @@ const EditProfile = () => {
               >
                 <Input placeholder="User Name" />
               </Form.Item>
-              <Form.Item
-                label="Email"
-                name="email"
-              >
+              <Form.Item label="Email" name="email">
                 <Input placeholder="Email" disabled />
               </Form.Item>
               <Form.Item
@@ -177,14 +175,9 @@ const EditProfile = () => {
                 </Button>
               </div>
             </Form>
-            </div>
           )}
 
-          {activeTab === "bookMark" && (
-            <div>
-              <ChangPassword />
-            </div>
-          )}
+          {activeTab === "bookMark" && <ChangPassword />}
         </div>
       </div>
     </div>

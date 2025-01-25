@@ -1,9 +1,7 @@
 /* eslint-disable no-constant-binary-expression */
 "use client";
-import React from "react";
-import { useState } from "react";
-import profile from "../../../public/article/profile.png";
-
+import React, { useState } from "react";
+import { FaUserCircle } from "react-icons/fa"; // Import the user icon from react-icons
 import BookMark from "./BookMark";
 import ArticleBookmark from "./ArticleBookmark";
 import { Link } from "@/i18n/routing";
@@ -18,12 +16,16 @@ const PersonalProfile = () => {
   const [activeTab, setActiveTab] = useState("personalInfo");
   const [activeTab1, setActiveTab1] = useState("video");
   const { data: userInfo, isLoading } = useGetUserQuery();
-  
+
   const p = useTranslations("profile");
   const n = useTranslations("navbar");
 
   if (isLoading) {
-    return <p className="h-screen"><Loading></Loading></p>;
+    return (
+      <p className="h-screen">
+        <Loading />
+      </p>
+    );
   }
 
   return (
@@ -52,11 +54,15 @@ const PersonalProfile = () => {
       {activeTab === "personalInfo" && (
         <div className="max-w-[700px] m-auto mt-20">
           <div className="flex justify-center">
-            <img
-              className="rounded-full h-[120px] w-[120px]"
-              src={`${BaseUrl}/${userInfo?.data?.profile_image}` || profile}
-              alt="profile"
-            />
+            {userInfo?.data?.profile_image ? (
+              <img
+                className="rounded-full h-[120px] w-[120px]"
+                src={`${BaseUrl}/${userInfo.data.profile_image}`}
+                alt="profile"
+              />
+            ) : (
+              <FaUserCircle className="text-gray-400" size={120} /> // React Icon fallback
+            )}
           </div>
 
           <div className="text-center">
@@ -107,30 +113,34 @@ const PersonalProfile = () => {
       {activeTab === "bookMark" && (
         <div>
           <div className="flex justify-end -mt-14">
-          <div className="grid grid-cols-2 p-[3px] mb-4 w-[200px] text-center text-white rounded-sm bg-cyan-700">
-            <button
-              className={`${
-                activeTab1 === "video" ? "bg-white text-black col-span-1 text-center py-1 rounded-sm" : ""
-              }`}
-              onClick={() => setActiveTab1("video")}
-            >
-              video
-            </button>
-            <button
-              className={`${
-                activeTab1 === "article" ? "bg-white text-black col-span-1 text-center py-1 rounded-sm" : ""
-              }`}
-              onClick={() => setActiveTab1("article")}
-            >
-              article
-            </button>
-          </div>
+            <div className="grid grid-cols-2 p-[3px] mb-4 w-[200px] text-center text-white rounded-sm bg-cyan-700">
+              <button
+                className={`${
+                  activeTab1 === "video"
+                    ? "bg-white text-black col-span-1 text-center py-1 rounded-sm"
+                    : ""
+                }`}
+                onClick={() => setActiveTab1("video")}
+              >
+                video
+              </button>
+              <button
+                className={`${
+                  activeTab1 === "article"
+                    ? "bg-white text-black col-span-1 text-center py-1 rounded-sm"
+                    : ""
+                }`}
+                onClick={() => setActiveTab1("article")}
+              >
+                article
+              </button>
+            </div>
           </div>
 
           {activeTab1 === "video" && (
             <div>
               <h1 className="text-[#3f8cb3] text-2xl pb-2 font-semibold">
-                {`Vedio's`}
+                {`Video's`}
               </h1>
               <BookMark />
             </div>
@@ -138,7 +148,7 @@ const PersonalProfile = () => {
 
           {activeTab1 === "article" && (
             <div>
-              <h1 className="text-[#3f8cb3] text-2xl pb-2  font-semibold">
+              <h1 className="text-[#3f8cb3] text-2xl pb-2 font-semibold">
                 {n("Article")}
               </h1>
               <ArticleBookmark />
