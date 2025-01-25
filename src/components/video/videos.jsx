@@ -69,7 +69,7 @@ const Videos = ({ videose }) => {
             className="text-2xl cursor-pointer"
           >
             <FaBookmark
-              style={{ color: videose.isBookmark === true ? "red" : "white" }}
+              style={{ color: videose.isBookmark === true ? "#FFBF5A" : "white" }}
             />
           </p>
         </div>

@@ -97,7 +97,7 @@ const locale = useLocale();
           className="text-2xl cursor-pointer"
         >
           <FaBookmark
-            style={{ color: item.isBookmark === true ? "red" : "cadetblue" }}
+            style={{ color: item.isBookmark === true ? "#FFBF5A" : "cadetblue" }}
           />
         </p>
       </div>

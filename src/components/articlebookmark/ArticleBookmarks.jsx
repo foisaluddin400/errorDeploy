@@ -47,7 +47,7 @@ const ArticleBookmarks = ({ videose }) => {
           <h2 className="text-lg font-bold truncate">{videose.title}</h2>
           <p onClick={() => handleBookmark(videose._id)} className="text-2xl cursor-pointer">
                 <FaBookmark
-                    style={{ color: videose.isBookmark===true ? "red" : "green" }}
+                    style={{ color: videose.isBookmark===true ? "#FFBF5A" : "green" }}
                   />
                 </p>
         </div>
