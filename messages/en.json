@@ -1,0 +1,91 @@
+{
+    "footer": {
+    "Kids Know Rights": "Kids Know Rights",
+    "Home": "Home",
+    "About Us": "About Us",
+    "Contact Us": "Contact Us",
+    "Terms & condition": "Terms & condition",
+    "privacy Policy": "privacy Policy",
+    "Feedback": "Feedback",
+    "Partner Law Firms": "Partner Law Firms",
+    "Quick Link": "Quick Link",
+    "Like Us?": "Like Us?",
+    "Facebook": "Facebook",
+    "Twitter": "Twitter",
+    "Children are not only our future, but they also have a right to shape it with their voices heard and their rights upheld":"Children are not only our future, but they also have a right to shape it with their voices heard and their rights upheld.",
+    "contact" : "Contact Us",
+    "Social Media": "Social Media"
+  },
+
+
+  "navbar": {
+    "Home": "Home",
+    "About Us": "About Us",
+    "Video": "Video",
+    "Article": "Article"
+  },
+
+
+  "hero": {
+    "Education is the most powerful weapon which you can use to change the world": "Education is the most powerful weapon which you can use to change the world.",
+    "Nelson Mandela": " Nelson Mandela",
+    "View Video": "View Video",
+    "search": "Search"
+    
+  },
+  "popular" : {
+    "Popular Videos": "Popular Videos",
+    "Special Video & Article For Your Children":"Special Video & Article For Your Children",
+    "Formulate" : "Formulate innovative web-readiness and installed base ideas. Distinctively integrate high-payoff paradigms without next generation systems disseminate holistic e-services through customer directed expertise.",
+    "Learn more" : "Learn more",
+    "Educational Article": "Educational Article",
+    "For Kids" : "For Kids",
+    "Faa": "FAQ"
+  },
+
+  "aboutus":{
+    "Discover Who We Are":"Discover Who We Are &",
+    "what drives us":"what drives us"
+  },
+  "article":{
+    "Read More":"Read More",
+    "day's ago":"day's ago"
+  },
+
+
+  "profile":{
+    "Full Name":"Full Name",
+    "Email":"Email",
+    "Contact Number":"Contact Number",
+    "Address":"Adress",
+    "Update": "Update",
+    "User Name": "User Name",
+    "Edit Your Profile":"Edit Your Profile",
+    "Save Changes" : " Save Changes",
+    "Change Password": "Change Password",
+    "Current Password":"Current Password",
+    "New Password":"New Password",
+    "Confirm Password":"Confirm Password",
+    "hours ago":"hours ago",
+    "Edit Profile": "Edit Profile",
+    "Personal Info": "Personal Info",
+    "Book Mark": "Book Mark",
+    "All Article":"All Article",
+    "All Videos":"All Videos",
+    "Notification": "Notification",
+    "Profile":"Profile",
+    "Details":"Details",
+    "More About":"More About",
+    "Contacting Us":"Contacting Us.",
+    "Location":"Location",
+    "Description":"Description",
+    "Select Services":"Select Services",
+    "Contact Us to":"Contact Us to",
+    "Explore":"Explore",
+    "Child":"Child",
+    "Learn":"Learn",
+    "Opportunities":"Opportunities.",
+    "Map":"Map"
+    
+  }
+}
