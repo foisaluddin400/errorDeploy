@@ -64,7 +64,7 @@ const page = () => {
           <div className="md:w-[20%]">
             <Navigate title={`${p("Details")}`}></Navigate>
           </div>
-          <div className="md:w-[60%]">
+          {/* <div className="md:w-[60%]">
             <label className="input input-bordered rounded-sm flex items-center gap-2 bg-[#75BEE3] max-w-[900px] m-auto text-white relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@ const page = () => {
                 {a("search")}
               </span>
             </label>
-          </div>
+          </div> */}
         </div>
 
         <div className="grid-cols-3 lg:grid">

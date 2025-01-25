@@ -94,6 +94,17 @@ const Navbar = () => {
                     </Link>
                   </div>
                 ))}
+                <div className="pt-4">
+                {isLoggedIn ? (
+              <button onClick={handleLogOut} className="text-white">
+                Log Out
+              </button>
+            ) : (
+              <Link href={`/signIn`} className="text-white">
+                Sign In
+              </Link>
+            )}
+                </div>
                 <div className="flex-grow"></div>
                 <div className="mb-4">
                   <Link href={"/personalInfo"}>
