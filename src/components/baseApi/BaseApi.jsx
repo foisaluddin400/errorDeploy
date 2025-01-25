@@ -1,3 +1,3 @@
-const BaseUrl = "http://143.110.241.146:9050"; 
+const BaseUrl = "https://expensive-weak-directive-scoring.trycloudflare.com"; 
 
 export default BaseUrl;
