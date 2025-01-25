@@ -1,3 +1,3 @@
-const BaseUrl = "https://expensive-weak-directive-scoring.trycloudflare.com"; 
+const BaseUrl = "https://san-approve-number-device.trycloudflare.com"; 
 
 export default BaseUrl;

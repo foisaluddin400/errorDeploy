@@ -2,7 +2,7 @@
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseUrl = "https://expensive-weak-directive-scoring.trycloudflare.com";
+const baseUrl = "https://san-approve-number-device.trycloudflare.com";
 
 // Helper function to get the token
 const getToken = () => {
