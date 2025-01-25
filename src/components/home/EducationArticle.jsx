@@ -25,7 +25,7 @@ const EducationArticle = () => {
   }
 
   if (error) {
-    return <p>Failed to load categories. Please try again later.</p>;
+    return <div className=" text-2xl flex justify-center ">Server Error articles Category: {error.message}</div>;
   }
 
   const categories =

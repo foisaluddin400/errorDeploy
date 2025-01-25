@@ -23,7 +23,7 @@ const Page = () => {
   }
 
   if (error) {
-    return <div>Error loading articles: {error.message}</div>;
+    return <div className="h-screen text-2xl flex justify-center items-center">Server Error articles: {error.message}</div>;
   }
 
   const articles = data?.data?.result || [];

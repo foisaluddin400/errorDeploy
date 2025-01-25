@@ -20,7 +20,7 @@ const Page = () => {
   }
 
   if (error) {
-    return <p>Error fetching data. Please try again later.</p>;
+    return <div className="h-screen text-2xl flex justify-center items-center">Server Error Partner Law: {error.message}</div>;
   }
 
   const { description } = law?.data || {};

@@ -29,7 +29,7 @@ const page = () => {
 
   if (error) {
     // Display error message if there's an error in the request
-    return <div>Error: {error.message}</div>;
+    return <div className="h-screen text-2xl flex justify-center items-center">Server Error Videos: {error.message}</div>;
   }
 
   return (

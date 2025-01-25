@@ -16,7 +16,7 @@ const ArticleBookmark = () => {
   }
 
   if (error) {
-    return <div>Error loading articles: {error.message}</div>;
+    return <div className="h-screen text-2xl flex justify-center items-center">Server Error Article Bookmark: {error.message}</div>;
   }
 
   // Filter articles with isBookmark true

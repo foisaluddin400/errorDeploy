@@ -22,7 +22,7 @@ const FaqSection = () => {
 
   // Handle potential errors
   if (error) {
-    return <p>Failed to load FAQs. Please try again later.</p>;
+    return <div className=" text-2xl flex justify-center ">Server Error Faq: {error.message}</div>;
   }
 
   // Prepare items for the Ant Design Collapse component

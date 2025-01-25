@@ -17,7 +17,7 @@ const BookMark = () => {
   }
 
   if (error) {
-    return <div>Error loading videos: {error.message}</div>;
+    return <div className="h-screen text-2xl flex justify-center items-center">Server Error Videos Bookmark: {error.message}</div>;
   }
 
   // Filter videos that are bookmarked
